@@ -258,7 +258,7 @@ public class VotesTest {
 
     };
 
-    
+
     @Test
     public void testDadoUmUsuarioQuandoBuscaUmDeterminadoVotoPeloSubIDEntaoObtenhoStatusCode200EDadosDaqueleVoto() {
         given()
