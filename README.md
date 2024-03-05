@@ -19,7 +19,7 @@
 1. Clone este repositório:
 
 ```bash
-git clone https://github.com/rosessantos/desafios_meu_tudo_api.git
+git clone https://github.com/PSVLOPES/automatiza_catapi.git
 ```
 
 2. Abra o IntelliJ ou sua IDE preferida e importe o projeto.
