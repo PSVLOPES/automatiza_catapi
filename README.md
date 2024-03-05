@@ -11,7 +11,7 @@
 >Certifique-se de ter as seguintes ferramentas instaladas em seu ambiente de desenvolvimento:
 ### Tecnologias
 - [Java 11](https://www.java.com/)
-- [Maven 3.8.1](https://maven.apache.org/ "Maven")
+- [Maven 4.0.0](https://maven.apache.org/ "Maven")
 - [RestAssured](https://rest-assured.io/)
 - [JUnit](https://junit.org/)
 
