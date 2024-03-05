@@ -35,7 +35,7 @@ public class VotesTest {
 
     @Test
     public void test01DadoUmUsuarioQuandoCadastraVoteEntaoObtenhoStatusCode201() {
-        String requestBody = "{\"image_id\":\"asf2\",\"sub_id\":\"sense2024.2\",\"value\":1}";
+        String requestBody = "{\"image_id\":\"asf2\",\"sub_id\":\"user01\",\"value\":1}";
 
         idVote = given()
                 .contentType("application/json")
