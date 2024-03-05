@@ -34,7 +34,7 @@ public class VotesTest {
 //////////////////////// CENÁRIOS PARA O POST ///////////////////////////
 
     @Test
-    public void test01DadoUmUsuarioQuandoCadastraVoteEntaoObtenhoStatusCode200() {
+    public void test01DadoUmUsuarioQuandoCadastraVoteEntaoObtenhoStatusCode201() {
         String requestBody = "{\"image_id\":\"asf2\",\"sub_id\":\"sense2024.2\",\"value\":1}";
 
         idVote = given()
@@ -60,11 +60,68 @@ public class VotesTest {
 
     }
 
+    @Test
+    public void testDadoUmUsuarioQuandoCadastraVoteComValoresValidosEntaoObtenhoStatusCode201() {
+            
+            for (int valor = 1; valor <= 10; valor++) {
+                    
+                    String requestBody = "{\"image_id\":\"asf2\",\"sub_id\":\"sense2024.2\",\"value\":" + valor + "}";
+
+                    
+                        given()
+                                    .contentType("application/json")
+                                    .header("x-api-key", "DEMO-API-KEY")
+                                    .body(requestBody)
+                        .when()
+                                    .post("/votes")
+                        .then()
+                                    .log().all()
+                                    .statusCode(201);
+            }
+    }
+
+
+    @Test
+    public void testDadoUmUsuarioQuandoCadastraVotePassandoUmValorDoVotoAcimaDe10EntaoObtenhoStatusCode400() {
+            String requestBody = "{\"image_id\":\"asf2\",\"sub_id\":\"sense2024.2\",\"value\":11}";
+
+                 given()
+                            .contentType("application/json")
+                            .header("x-api-key", "DEMO-API-KEY")
+                            .body(requestBody)
+                .when()
+                            .post("/votes")
+                .then()
+                            .log().all()
+                            .header("content-type", "application/json; charset=utf-8")
+                            .statusCode(400);
+                            
+
+    }
+
+
+    @Test
+    public void testDadoUmUsuarioQuandoCadastraVotePassandoUmValorDoVotoNegativoEntaoObtenhoStatusCode400() {
+            String requestBody = "{\"image_id\":\"asf2\",\"sub_id\":\"sense2024.2\",\"value\":-1}";
+
+                 given()
+                            .contentType("application/json")
+                            .header("x-api-key", "DEMO-API-KEY")
+                            .body(requestBody)
+                .when()
+                            .post("/votes")
+                .then()
+                            .log().all()
+                            .header("content-type", "application/json; charset=utf-8")
+                            .statusCode(400);
+
+    }
+
     ///////////////////////// CENÁRIOS PARA O GET ALL ///////////////////////
 
 
     @Test
-    public void test02DadoQueDesejoBuscarTodosVotosQuandoNaoPassoNenhumFiltroEFacoBuscaEntaoObtenhoStatusCode200ETodosVotos() {
+    public void testDadoQueDesejoBuscarTodosVotosQuandoNaoPassoNenhumFiltroEFacoBuscaEntaoObtenhoStatusCode200ETodosVotos() {
         given()
                 .contentType("application/json")
                 .header("x-api-key", "DEMO-API-KEY")
@@ -96,7 +153,7 @@ public class VotesTest {
     };
 
     @Test
-    public void test03DadoQueDesejoBuscarTodosVotosOrdemDecrescenteQuandoInformoFiltroDESCEntaoObtenhoStatusCode200ETodosVotosDecrescente() {
+    public void testDadoQueDesejoBuscarTodosVotosOrdemDecrescenteQuandoInformoFiltroDESCEntaoObtenhoStatusCode200ETodosVotosDecrescente() {
         given()
                 .contentType("application/json")
                 .header("x-api-key", "DEMO-API-KEY")
@@ -128,7 +185,7 @@ public class VotesTest {
     };
 
     @Test
-    public void test04DadoQueNaoInformoKeyEntaoObtenhoStatusCode401() {
+    public void testDadoQueNaoInformoKeyEntaoObtenhoStatusCode401() {
         given()
                 .header("content-type","application/json")
 
@@ -140,7 +197,7 @@ public class VotesTest {
     };
 
     @Test
-    public void test05DadoUmUsuarioQuandoBuscaUmDeterminadoVotoPeloSubIDEntaoObtenhoStatusCode200EDadosDaqueleVoto() {
+    public void testDadoUmUsuarioQuandoBuscaUmDeterminadoVotoPeloSubIDEntaoObtenhoStatusCode200EDadosDaqueleVoto() {
         given()
                 .contentType("application/json")
                 .header("x-api-key", "DEMO-API-KEY")
@@ -177,7 +234,7 @@ public class VotesTest {
     //////////////////////// CENÁRIOS PARA O GET BY ID ////////////////////
 
     @Test
-    public void test06DadoUmUsuarioQuandoBuscaUmDeterminadoVotoPeloIDEntaoObtenhoStatusCode200EDadosDaqueleVoto() {
+    public void testDadoUmUsuarioQuandoBuscaUmDeterminadoVotoPeloIDEntaoObtenhoStatusCode200EDadosDaqueleVoto() {
         given()
                 .contentType("application/json")
                 .header("x-api-key", "DEMO-API-KEY")
@@ -200,7 +257,7 @@ public class VotesTest {
     };
 
     @Test
-    public void test07QuandoBuscOUmDeterminadoVotoPassandoUmIdNaoExistenteEntaoObtenhoStatusCode404() {
+    public void testQuandoBuscOUmDeterminadoVotoPassandoUmIdNaoExistenteEntaoObtenhoStatusCode404() {
         given()
                 .contentType("application/json")
                 .header("x-api-key", "DEMO-API-KEY")
