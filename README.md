@@ -11,6 +11,7 @@
 >Certifique-se de ter as seguintes ferramentas instaladas em seu ambiente de desenvolvimento:
 ### Tecnologias
 - [Java 11](https://www.java.com/)
+- [Maven 3.8.1](https://maven.apache.org/ "Maven")
 - [RestAssured](https://rest-assured.io/)
 - [JUnit](https://junit.org/)
 
@@ -39,7 +40,7 @@ Os testes contidos na classe `VotesTest` realizam as seguintes ações:
 
 3. **Verbo DELETE:** Envia uma requisição DELETE para um recurso específico e valida o status code (200) e se o registro do voto foi apagado.
 
-4. **JSON Schema e HTTP Code:** Realiza uma requisição GET para o endpoint e valida o JSON Schema utilizando um arquivo externo (`votes.json`) e o status code (200).
+4. **JSON Schema e HTTP Code:** Realiza uma requisição GET para o endpoint e valida o JSON Schema utilizando arquivos externos que estão em (`target/classes/*.json`).
 
 
 ## Autor
