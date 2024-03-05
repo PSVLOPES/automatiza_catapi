@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="0" passed="0" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-03-04T12:43:02 BRT" name="com.catapi.votes.VotesTest" finished-at="2024-03-04T12:43:02 BRT" duration-ms="20">
+    <groups>
+    </groups>
+    <test started-at="2024-03-04T12:43:02 BRT" name="Command line test" finished-at="2024-03-04T12:43:02 BRT" duration-ms="20">
+    </test> <!-- Command line test -->
+  </suite> <!-- com.catapi.votes.VotesTest -->
+</testng-results>
