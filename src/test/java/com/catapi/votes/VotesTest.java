@@ -49,7 +49,7 @@ public class VotesTest {
                 .body("message" , equalTo("SUCCESS"))
                 .body("id" , notNullValue())
                 .body("image_id" , equalTo("asf2"))
-                .body("sub_id", equalTo("sense2024.2"))
+                .body("sub_id", equalTo("user01"))
                 .body("value" , equalTo(1))
                 .body("country_code" , equalTo("BR"))
                 .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("post-votes.json"))
