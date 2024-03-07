@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "image_id": {
+      "type": "string"
+    },
+    "sub_id": {
+      "type": "string"
+    },
+    "value": {
+      "type": "integer"
+    },
+    "country_code": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "message",
+    "id",
+    "image_id",
+    "sub_id",
+    "value",
+    "country_code"
+  ]
+}
