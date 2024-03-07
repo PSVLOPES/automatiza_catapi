@@ -28,7 +28,7 @@ git clone https://github.com/PSVLOPES/automatiza_catapi.git
 
 3. Execute os testes:
 
-   - Navegue até `src/test/java/com/catapi/votes` e execute a classe `VotesTest` utilizando o JUnit.
+   - Navegue até `src/test/java/com/catapi/votes` e execute a classe `VotesTest`.
 
 ## Execução dos Testes
 
