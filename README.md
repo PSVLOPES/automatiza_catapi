@@ -40,7 +40,7 @@ Os testes contidos na classe `VotesTest` realizam as seguintes ações:
 
 3. **Verbo DELETE:** Envia uma requisição DELETE para um recurso específico e valida o status code (200) e se o registro do voto foi apagado.
 
-4. **JSON Schema e HTTP Code:** Realiza uma requisição GET para o endpoint e valida o JSON Schema utilizando arquivos externos que estão em (`target/classes/*.json`).
+4. **JSON Schema e HTTP Code:** Realiza uma requisição GET para o endpoint e valida o JSON Schema utilizando arquivos externos que estão em (`src/resources/schemas/*.json`).
 
 
 ## Autor
