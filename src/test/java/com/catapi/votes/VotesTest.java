@@ -1,20 +1,18 @@
 package com.catapi.votes;
 
 
-
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+
+
 import java.util.List;
 
-
 import static io.restassured.RestAssured.*;
-import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
-import io.restassured.module.jsv.JsonSchemaValidator;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 
 
@@ -25,8 +23,8 @@ public class VotesTest {
     public String contentType = "application/json";
     public String idVote;
 
-    @BeforeClass
-    public static void setup() {
+    @BeforeEach
+    public void setup() {
         baseURI = "https://api.thecatapi.com";
         basePath = "/v1";
 
@@ -36,7 +34,8 @@ public class VotesTest {
 
 //////////////////////// CENÁRIOS PARA O POST ///////////////////////////
 
-    @Test //testDadoUmUsuarioQuandoCadastraVoteEntaoObtenhoStatusCode201
+    @Test
+    //testDadoUmUsuarioQuandoCadastraVoteEntaoObtenhoStatusCode201
     public void efetuarVotacao() {
 
         Response response =
@@ -155,9 +154,9 @@ public class VotesTest {
                 .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/get-votes.json"))
                 .statusCode(200);
 
-    };
+    }
 
-    @Test //testDadoQueDesejoBuscarTodosVotosOrdemDecrescenteQuandoInformoFiltroASCEntaoObtenhoStatusCode200ETodosVotosDecrescente
+    @Test //testDadoQueDesejoBuscarTodosVotosOrdemCrescenteQuandoInformoFiltroASCEntaoObtenhoStatusCode200ETodosVotosDecrescente
     public void buscaOrdemCrescente() {
         Response response =
                 given()
@@ -192,11 +191,15 @@ public class VotesTest {
         /// Extrair os valores do "created_at" do response body ///
         List<String> createdDates = response.jsonPath().getList("created_at");
 
-        /// Verifica se os valores estão em ordem decrescente ///
+        /// Verifica se os valores estão em ordem crescente ///
         for (int i = 1; i < createdDates.size(); i++) {
-            Assert.assertTrue("Os valores de created_at não estão em ordem crescente",
-                    createdDates.get(i - 1).compareTo(createdDates.get(i)) <= 0);
+            Assert.assertTrue(createdDates.get(i - 1).compareTo(createdDates.get(i)) <= 0,
+                    "Os valores de created_at não estão em ordem crescente");
         }
+
+
+
+
     }
 
 
@@ -237,9 +240,10 @@ public class VotesTest {
 
         /// Verifica se os valores estão em ordem decrescente ///
         for (int i = 1; i < createdDates.size(); i++) {
-            Assert.assertTrue("Os valores de created_at não estão em ordem decrescente",
-                    createdDates.get(i - 1).compareTo(createdDates.get(i)) >= 0);
+            Assert.assertTrue(createdDates.get(i - 1).compareTo(createdDates.get(i)) >= 0,
+                    "Os valores de created_at não estão em ordem decrescente");
         }
+
     }
 
 
@@ -254,7 +258,7 @@ public class VotesTest {
         .then()
                 .statusCode(401);
 
-    };
+    }
 
 
     @Test //testDadoUmUsuarioQuandoBuscaUmDeterminadoVotoPeloSubIDEntaoObtenhoStatusCode200EDadosDaqueleVoto
@@ -287,7 +291,7 @@ public class VotesTest {
                 .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/get-votes.json"))
                 .statusCode(200);
 
-    };
+    }
 
 
 
@@ -304,7 +308,7 @@ public class VotesTest {
         .then()
                 .statusCode(401);
 
-    };
+    }
 
 
 
@@ -331,10 +335,10 @@ public class VotesTest {
                 .body("image.url" , hasItems())
                 .statusCode(200);
 
-    };
+    }
 
-    @Test
-    public void testQuandoBuscOUmDeterminadoVotoPassandoUmIdNaoExistenteEntaoObtenhoStatusCode404() {
+    @Test //testQuandoBuscOUmDeterminadoVotoPassandoUmIdNaoExistenteEntaoObtenhoStatusCode404
+    public void buscaVotoComIdInexistente() {
         given()
                 .contentType(contentType)
                 .header("x-api-key", "DEMO-API-KEY")
@@ -346,7 +350,7 @@ public class VotesTest {
                 .header("content-type", "text/plain; charset=utf-8")
                 .statusCode(404);
 
-    };
+    }
 
         //////////////////////// CENÁRIOS PARA O DELETE ////////////////////
 
@@ -360,7 +364,7 @@ public class VotesTest {
                 .then()
                         .statusCode(401);
 
-        };
+        }
         
         
 
