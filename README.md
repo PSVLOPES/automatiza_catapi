@@ -1,4 +1,4 @@
-# Projeto de automação de testes da API Votes do The CatApi
+# Projeto de automação de testes da API Votes do The CatApi utilizando REST-Assured
 &nbsp;
 >Este projeto de automação em RestAssured tem como objetivo realizar cenários de testes nos três verbos HTTP (GET, POST, DELETE) para a API disponibilizada no endpoint: [https://api.thecatapi.com/v1/votes](https://api.thecatapi.com/v1/votes).
 
